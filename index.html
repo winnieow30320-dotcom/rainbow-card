@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <title>我的彩虹卡</title>
+    <style>
+        body { background-color: #f0f0f0; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; font-family: sans-serif; }
+        #card { width: 300px; height: 180px; background: white; border-radius: 15px; display: flex; align-items: center; justify-content: center; padding: 20px; text-align: center; font-size: 1.2rem; box-shadow: 0 10px 20px rgba(0,0,0,0.1); transition: transform 0.3s; margin-bottom: 30px; border-left: 10px solid #ccc; }
+        button { padding: 10px 30px; font-size: 1rem; cursor: pointer; border: none; background: #333; color: white; border-radius: 5px; }
+    </style>
+</head>
+<body>
+    <div id="card">點擊按鈕抽取一張彩虹卡</div>
+    <button onclick="drawCard()">抽取彩虹卡</button>
+
+    <script>
+        const cards = [
+            { text: "我願意放下過去，迎接美好的當下。", color: "#FF5252" }, // 紅
+            { text: "我的生命充滿喜悅與豐盛。", color: "#FF9800" }, // 橙
+            { text: "我有能力創造我想要的生活。", color: "#FFEB3B" }, // 黃
+            { text: "我愛自己，也愛周圍的人。", color: "#4CAF50" }   // 綠
+        ];
+
+        function drawCard() {
+            const randomIndex = Math.floor(Math.random() * cards.length);
+            const cardElement = document.getElementById('card');
+            cardElement.innerText = cards[randomIndex].text;
+            cardElement.style.borderLeftColor = cards[randomIndex].color;
+            cardElement.style.transform = "scale(1.05)";
+            setTimeout(() => cardElement.style.transform = "scale(1)", 200);
+        }
+    </script>
+</body>
+</html>
